@@ -1,0 +1,90 @@
+## Codificando
+
+### Plugins de Visual Studio Code
+
+Para el trabajo agil con Visual Studio Code y Laravel, agregaremos los siguientes Plugins
+
+- 
+
+
+### Levandando servicio de Laravel
+
+Para arrancar nuestro proyecto lo realizaremos con el siguiente comando:
+    php artisan serve
+
+
+Artisan es una interfaz que nos permite con la linea de ocmando hacer mas rapido el trabajo con laravel, con artisan podemos levantar el servidor, crar controladores, crear modelos, migrar las base de datos.
+
+
+Al correr este comando tenemos ya nuestro servicio corriendo, podemos ya abrir un agente de usuario e ir a la url: 
+    http://127.0.0.1:8000/
+
+
+### Errores de inicio.
+
+
+Para establecer parametro o valores tenemos nuestro archivo de configuración en 
+ .env
+
+Para la conexión de la Base de datos de manera inicial nos presenta el esquema de variables siguientes:
+
+
+DB_CONNECTION=sqlite
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=laravel
+# DB_USERNAME=root
+# DB_PASSWORD=
+
+
+
+Cambiamos algunos valores de las variables:
+
+APP_LOCALE=es
+APP_FALLBACK_LOCALE=es
+APP_FAKER_LOCALE=es_MX
+
+
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=taskcrud
+DB_USERNAME=root
+DB_PASSWORD=desarrollo
+
+Pero nos genera un error como se muedtra a continuación
+
+Illuminate\Database\QueryException
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'taskcrud.sessions' doesn't exist (Connection: mysql, SQL: select * from `sessions` where `id` = VLtQqa2w3KfDskYMmhAXQ2AlfHGDuuviYkH1cHMN limit 1)
+
+
+La tabla de sesión no se genera de forma predeterminada cuando configura su aplicación, alguien no usó la sesión en la base de datos (usando redis o sistema de archivos)
+
+Para generar la tabla, habra que llamar a la sesión con
+    
+    php artisan session:table
+    
+y luego, migre la tabla 
+
+    php artisan migrate
+    
+Esto creará una tabla de sesión
+
+Verificamos el funcionamiento de nuestra aplicación y podemos corroborar que se ecuentra funcionando correctamente.
+
+
+Tenemos Laravel v11.10.0 (PHP v8.3.6) Funcionando.
+
+Debemos exportar la BD para posteriormente poder utilizarla en otros equipos.
+
+
+Asi ya contamos con dos directorios adicionales
+
+/doc
+/1. config
+
+/2. bd
+
+
+
