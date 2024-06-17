@@ -1,0 +1,16 @@
+Para la estructura de la Bd, nuestra aplicación contara con una serie de tareas que se podran ir desarrollando y estableciendo como actividades pendinetes,
+
+Tendras una fecha de asignación, una fecha de termino, y la tarea especifica a realizar, posiblemente estemos considerando
+Un cuatro de texto donde se desarrolle a detalle las actividades, pero es una consideración que se establecera durante el desarrollo de la aplicación.
+
+Por lo tanto los campos quedan:
+
+id_task
+descrip_task
+fecha_termino
+fecha_ejec
+
+Hasta este momento los campos quedan establecidos de esta manera. Ya que puede sondierararse la asignación de
+quien realizara la asignación de la tarea, aunque eso implica una asociación de otra tabla.
+
+Para efectos practicos de la aplicación solo se considerara una sola tabla, ya que la finalidad es establecer el CRUD y no una complejidad en el sistema.
