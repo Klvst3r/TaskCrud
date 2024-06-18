@@ -7,6 +7,7 @@ Por lo tanto los campos quedan:
 
 id_task
 descrip_task
+lugar_task
 fecha_termino
 fecha_ejec
 
@@ -14,3 +15,12 @@ Hasta este momento los campos quedan establecidos de esta manera. Ya que puede s
 quien realizara la asignación de la tarea, aunque eso implica una asociación de otra tabla.
 
 Para efectos practicos de la aplicación solo se considerara una sola tabla, ya que la finalidad es establecer el CRUD y no una complejidad en el sistema.
+
+Este sistema esta considerado para el registro de tareas y asignaciones de atención realizadas, las tareas o procesos completados
+No se eleiminaran, sino pasaran a tareas completadas, para ello habra una bandera de estado todo-done
+
+Lo importante es la fecha asignada, la fecha realizada, y el numero de tareas, con su descricipción y posible area de ejecución.
+
+Asi tambien lo impoartante es hacer el crud lo mas rapido posible para tener un sistema en funcionamiento con lo necesario y lo mas basico.
+
+
