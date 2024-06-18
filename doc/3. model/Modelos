@@ -1,0 +1,39 @@
+Para empezar nuesro CRUD trabajaremos con modelos y la forma de crearlo desde la termina es medainte el siguiente comando:
+
+php artisan make:model nombre_modelo
+
+Nuestro Modelo se llamara "Task"
+
+Queremos crear nuestra migración es dcir la tabla y nuestro controlador.
+
+Ej.
+php artisan make:model Task -mc
+
+Con esto comenzara a crear nuestra tabla llamada Tasks,
+
+Importante comentar que en Larvel se tiene una sintaxis las tablas son en plurar y van en mayuscula la primera.
+
+Teniendo nuesra tabla, nuestro modelo y nuestro controlador verificamos en
+
+Controller
+TaskController.php
+
+Models
+Task
+
+Migrations (Tabla)
+Tasks
+
+Comenzando con la tabla
+Vaos a crear la tabla de la migración de las tareas,
+
+id_task
+descrip_task
+tipo_task
+personal_task
+fecha_termino
+fecha_ejec
+
+id -> Identificador
+
+timestamps -> Tiempo actual al momento del registro
