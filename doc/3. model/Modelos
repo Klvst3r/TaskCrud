@@ -24,6 +24,16 @@ Task
 Migrations (Tabla)
 Tasks
 
+En terminal:
+
+php artisan make:model Task -mc
+
+INFO Model [app/Models/Task.php] created successfully.
+
+INFO Migration [database/migrations/2024_06_18_233829_create_tasks_table.php] created successfully.
+
+INFO Controller [app/Http/Controllers/TaskController.php] created successfully.
+
 Comenzando con la tabla
 Vaos a crear la tabla de la migración de las tareas,
 
@@ -31,9 +41,115 @@ id_task
 descrip_task
 tipo_task
 personal_task
-fecha_termino
-fecha_ejec
+fecha_task
 
-id -> Identificador
+id -> Identificador unico de la tabla
+descrip_task -> Descrición de la tarea
+tipo_task -> Tipo de tarea [Soporte, Audiencias, JAVS, Discos-Jueces, Copias-Audiovisuales, Optimizacion]
+personal_task -> Persoa a quien se realiza la tarea, en el caso de Audiencias el registro sera para TICS
+timestamps -> Tiempo actual al momento del registro, es decir fecha creda y fecha actualizada
 
-timestamps -> Tiempo actual al momento del registro
+La tabla entonces queda de la siguiente manera para nuestra migración:
+
+Schema::create('tasks', function (Blueprint $table) {
+$table->id();
+$table->string('descrip_task', 95);
+$table->string('tipo_task', 25);
+$table->string('personal_task', 75);
+$table->timestamps();
+});
+
+Para ejecutar nuestra migración
+php artisan migrate
+
+php artisan migrate
+
+INFO Running migrations.
+
+2024_06_18_233829_create_tasks_table .............................................. 57.22ms DONE
+
+Con ello migramis nuestra tabla con esto tenemos nuestras tablas:
+
+Generando el codigo en SQL para la tabla tasks
+
+CREATE TABLE `tasks` (
+`id` bigint unsigned NOT NULL AUTO_INCREMENT,
+`descrip_task` varchar(95) COLLATE utf8mb4_unicode_ci NOT NULL,
+`tipo_task` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
+`personal_task` varchar(75) COLLATE utf8mb4_unicode_ci NOT NULL,
+`created_at` timestamp NULL DEFAULT NULL,
+`updated_at` timestamp NULL DEFAULT NULL,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+Se creo con cada uno de los campos descritos en la estructura y la descrición del modelo.
+
+con esto hemos creado nuestra tabla.
+
+Para nuestro ejemplo podremos borrar registros de nuestro crud, pero en un futuro se tendra la evidencia y registro de cada una de las tareas registradas para la emisión de nuestro informe.
+
+Si requerimos renombrar o modificar el nombre de algun campo en nuestra migración.
+
+por ejemplo:
+
+descrip_task y l queremos renombrar como desc_task
+
+Hacemos el cambio en nuestra migración y en consola:
+
+php artisan migrate:fresh (Borrara todas las tablas y creara nuevamente)
+
+Ahora podremos ir anuestro modelo:
+
+En nuestro modelo, vamos a especificar un tipo de variable llamada protected y vamos a pooner $guarned lo que hara es que cuando estemos en una interfaz en el frontend, espeificamos que campos no queresmo que se ingresen.
+En nuestro caso sera vacio por que queremos ingresar todos los campos.
+
+class Task extends Model
+{
+use HasFactory;
+protected $guarded = [];
+}
+
+Ahora vamos a nuestro contrlador
+
+Definimos
+
+use App\Models\Task;
+
+class TaskController extends Controller
+{
+public function index() {
+$tasks = Task::all();
+        return view("tasks.index", ['tasks'=>$tasks]);
+
+    }
+
+}
+
+y podemos notar que importamos el modelo a utilizar
+
+Para hacer nuesyra interfaz sera del lado del front end
+
+Creamos nuestra vista
+Caundo een nuestro controlador ponemos algo como
+
+return view
+
+Se va rapidamoente a la caprte de vistas
+
+Especificamos que hay un acarpeta llamada tasks y dentro de ella se crea un index.blade.php
+
+Teniendo ya listos el controlador y el modelo, podemos entonces ya trabajar con la vista, modificando la ruta
+
+routes/web.php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\TaskController;
+
+Route::controller(TaskController::class)->group( function(){
+Route::get("/","index")->name('tasks.index');
+});
+
+Al marcarnos un error no faltaba la llamada al controlador TaskControllers por que se tenia como no definido TaskController::class
+
+Hasta aca podemos hacer un breackpoint de Create y respaldar nuestra base de dato inicial.
