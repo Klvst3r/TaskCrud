@@ -1,0 +1,13 @@
+Para agregar nuestro registro, y teniendo como base nuestro listado de tareas, vamos a crear un boton para poder agregar
+una nueva tarea a nuestro listado.
+
+Para ello en nuestro formulario
+<a href="{{ route('tasks.create') }}" class="btn btn-success">Agregar Tarea</a>
+
+Este metodo no esta definido, por lo que es necesario agregarlo en nuestro controlador
+
+public function create() {
+return view('tasks.create');
+}
+
+Tomando en consideración que esta vista nu esta creada procedemos a craar la misma

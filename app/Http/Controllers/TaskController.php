@@ -12,4 +12,8 @@ class TaskController extends Controller
         return view("tasks.index", ['task'=>$tasks]);
 
     }
+
+    public function create() {
+        return view('tasks.create');
+    }
 }
