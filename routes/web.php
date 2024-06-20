@@ -16,5 +16,7 @@ Route::controller(TaskController::class)->group( function(){
     Route::get('tasks/create','create')->name('tasks.create');
 
     Route::post("tasks","store")->name("tasks.store");
+
+    Route::delete('tasks/{task}', "destroy")->name("tasks.destroy");
 });
 

@@ -12,3 +12,22 @@ Para ello en nuestro listado de tareas activamos el boton de borrado
 
 Activamos y ahora vamos a crear nuestro metodo en el Controlador inicialmente.
 
+Aun no se ha utilizado el metodo destry, asi que vamos a crearl en las rutas.
+
+Con esto tenemos ya la ruta
+Route::delete('tasks/{task}', "destroy")->name("tasks.destroy");
+
+Ahora sera necesario el Controlador de este metodo anterior a utilizar
+
+public function destroy(Task $task) {
+    $task->delete();
+    return redirect()->route('tasks.index');
+}
+
+
+Cos estos tres elementos podremos borrar los resgitros seleccionados, tal vez la implementación siguiente sea una caja de texto donde permita confirmar borrar la información de ese reisro en concreto
+
+Por ultimo creamos nuestro respaldo de la base de datos, posterior a este metodo.
+
+
+
