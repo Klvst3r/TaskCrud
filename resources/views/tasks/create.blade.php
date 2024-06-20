@@ -12,10 +12,15 @@
 
     <title>Hello, world!</title>
 </head>
-<div>
-    <div>
-        <div>
-            <form action="{{ route('tasks.store') }}" method="POST">
+
+<div class="container mt-5">
+    <div class="card col-md-6 offset-3">
+        <div class="card-header">
+            Creando Tareas
+        </div>
+        <div class="card-body">
+            {{-- action="{{ route('tasks.store') }}" --}}
+            <form method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="descripcion">Descrición - Nombre</label>
