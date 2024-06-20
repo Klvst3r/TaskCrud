@@ -47,12 +47,13 @@
                             <th>
                                 <div class="container">
                                     <div class="row justify-content-md-center">
-                                        {{-- <a href="{{ route('tasks.edit', $item) }}" class="btn btn-success col-3">Editar</a>
-                                <form action="{{ route('tasks.destroy', $item) }}" method="POST" class="col-3...">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="btn btn-danger w-100">Borrar</button>
-                                </form> --}}
+                                        {{-- <a href="{{ route('tasks.edit', $item) }}" class="btn btn-success col-3">Editar</a> --}}
+                                        <form action="{{ route('tasks.destroy', $item) }}" method="POST"
+                                            class="col-3">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger w-100">Borrar</button>
+                                        </form>
                                     </div>
                                 </div>
                             </th>

@@ -1,0 +1,14 @@
+La siguiente acción a realizar con nuestro CRUD es Borrar un registro.
+
+Para ello en nuestro listado de tareas activamos el boton de borrado
+
+
+<form action="{{ route('tasks.destroy', $item) }}" method="POST"
+                                            class="col-3">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger w-100">Borrar</button>
+                                        </form>
+
+Activamos y ahora vamos a crear nuestro metodo en el Controlador inicialmente.
+
