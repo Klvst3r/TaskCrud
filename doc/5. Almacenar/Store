@@ -1,0 +1,74 @@
+Para guardar los datos es necesario que desde el formulario de creación de tareas se agregue la acción al formulario, es decir el script que realizara la tarea de almacenamiento de valores en la bd
+
+Para ello se agrega la accion al formulacio
+
+          <form action="{{ route('tasks.store') }}" method="POST">
+
+Se crea el controlador propio que hara la gestion de los datos llamando a la vista y posteriormente al modelo que hara la tarea de la insercion de los datos
+
+En TaskController
+
+Aca se hace uso de Request
+
+public function store(Task $request){
+
+    }
+
+El metodo para la creación sera>
+
+public function store(Task $request){
+        $task = Task::create($request->all());
+}
+
+Queremos que nos redireccione al termino de la inserción de valores a la bd hacia index
+
+public function store(Task $request){
+        $task = Task::create($request->all());
+return redirect()->route('tasks.index');
+}
+
+Aca tambien debemos hacer la validación
+
+Ya que antes de guardar los valores queremos que se realice una validación
+
+     public function store(Task $request){
+            $request->validate([
+                'descripcion' =>'required',
+                'tipo' =>'required',
+                'atencion' => 'required',
+            ]);
+
+            $task = Task::create($request->all());
+            return redirect()->route('tasks.index');
+        }
+
+es decir que desde el formulario forzosamente tengan un valor
+no pueden ir vacios conforme al tipo de datos que vamos llenando, esto se genera a traves del orm, esto es como hacer un inser into <tabla>, e co si fuera la sentencia SQL.
+
+con $request->all()se capta toda esa información
+
+$task = Task::create($request->all());
+
+Se capta toda esa información, tanto el nombre como la dirección y lo almacenamos en la variable $task
+
+Ahora loque se va a realizar es:
+
+En web o las rutas lo que se hace es mediante el mottodo POST, vamos a la URL task y mediante el metodo store llamaremos al metodo task.store
+
+     Route::post("tasks","store")->name("tasks.store");
+
+Con esto ya deberia guardar
+
+Volvemos al formulario de creación de tareas y verificamos la validación de la inserción.
+
+Antes de continuar con la inserción de valores, vamos a generar un respaldo de la BD
+
+A traves del servicio de MAMP instalado
+
+Y is no tenemos instalado nuestro gestor de Bd web lo descargamos e instalamos en:
+DOCUMENT_ROOT /Applications/MAMP/htdocs
+
+Podemos referenciarnos con las variables del sistema mediante.
+http://localhost:8888/MAMP/phpinfo.php
+
+http://localhost:8888/phpMyAdmin5/

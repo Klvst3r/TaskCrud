@@ -17,3 +17,5 @@ Siendo esta la del formulario con los campos
 Descripcion de Tarea - Input
 Tipo de Tarea - Input
 Atención a usuario - input
+
+Secrean los botones de agregar y regresar que levan al listado de la bd y de ahi al formulario de creación de tareas.

@@ -19,11 +19,11 @@
             Creando Tareas
         </div>
         <div class="card-body">
-            {{-- action="{{ route('tasks.store') }}" --}}
-            <form method="POST">
+
+            <form action="{{ route('tasks.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label for="descripcion">Descrición de la tarea - Nombre</label>
+                    <label for="descripcion">Descripción de la tarea </label>
                     @error('descripcion')
                         <small style="color: red">* {{ $message }}</small>
                     @enderror
@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="atencion">Tipo de tarea - categoria</label>
+                    <label for="atencion">Tipo de tarea </label>
                     @error('tipo')
                         <small style="color: red">* {{ $message }}</small>
                     @enderror
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="atencion">Atención a usuario - Descrición</label>
+                    <label for="atencion">Atención a usuario </label>
                     @error('atencion')
                         <small style="color: red">* {{ $message }}</small>
                     @enderror
