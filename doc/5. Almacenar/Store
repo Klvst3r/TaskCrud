@@ -97,3 +97,5 @@ $request->validate([
 Verificamos y hacemos la insercion de tarea nueva.
 
 Hasta aca deberia de funcionar correctamente.
+
+Ahora podremos crear nuestras siguientes operacione que es el de etitar y eliminar tareas.
