@@ -14,7 +14,7 @@
 </head>
 
 <div class="container mt-5">
-    <div class="card col-md-6 offset-3">
+    <div class="card col-xs-6 offset-1">
         <div class="card-header">
             Creando Tareas
         </div>
@@ -23,7 +23,7 @@
             <form method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label for="descripcion">Descrición - Nombre</label>
+                    <label for="descripcion">Descrición de la tarea - Nombre</label>
                     @error('descripcion')
                         <small style="color: red">* {{ $message }}</small>
                     @enderror
@@ -51,9 +51,11 @@
                     <input type="text" class="form-control" name="atencion" id="atencion"
                         value="{{ old('atencion') }}">
                 </div>
-                <div class="d-grid">
-                    <button type="submit" class="btn btn-primary">Registrar tarea</button>
-                    <a href="{{ route('tasks.index') }}" class="btn btn-warning mt-2">Cancelar</a>
+                <div class="d-grid mt-3">
+                    <div class="offset-4">
+                        <button type="submit" class="btn btn-primary mt-2">Registrar tarea</button>
+                        <a href="{{ route('tasks.index') }}" class="btn btn-warning mt-2">Cancelar</a>
+                    </div>
                 </div>
 
             </form>

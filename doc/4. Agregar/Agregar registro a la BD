@@ -11,3 +11,9 @@ return view('tasks.create');
 }
 
 Tomando en consideración que esta vista nu esta creada procedemos a craar la misma
+
+Siendo esta la del formulario con los campos
+
+Descripcion de Tarea - Input
+Tipo de Tarea - Input
+Atención a usuario - input
