@@ -1,0 +1,64 @@
+## Qué es Laravel y por qué es tan utilizado
+
+    No existe sólo un motivo, son muchas las cualidades de Laravel para conseguir ser la opción preferida por tantos y tantos desarrolladores para llevar a cabo sus proyectos, así que vamos a ver qué es Laravel y cómo funciona.
+
+###    Qué es Laravel
+
+    Si nos ceñimos a la definición estándar,Laravel es un framework de PHP que es utilizado para desarrollar aplicaciones web.
+
+    PHP es el lenguaje de programación más utilizado en mundo para desarrollar sitios web, aplicaciones web y los populares CMS, como WordPress o Joomla.
+
+    Laravel crea un entorno de trabajo y proporciona herramientas a los desarrolladores para ayudarles a desarrollar en PHP sus aplicaciones web.
+
+    Lo que se busca con Laravel es construir aplicaciones sólidas y estables, que sean fáciles de desarrollar y la utilización de parte del código preprogramada, para que pueda aprovecharse y reutilizarse, evitando así la reescritura del código en la misma aplicación.
+
+    Gracias a esto se consiguen aplicaciones con un código estable, sencillo de actualizar y con la posibilidad de añadir nuevas funcionalidades sin necesidad de modificar el código base, por medio de un sistema de paquetes modulares.
+
+    Laravel es un sistema de código abierto, por lo que no hay que pagar por usarlo.
+
+
+###    Qué es un Framework
+
+    Unframeworkes un entorno de trabajo, que sigue un patrón o esquema estandarizado que se utiliza para desarrollar aplicaciones o cualquier tipo de software.
+
+    Los framework facilitan la vida a los desarrolladores la creación de sus proyectos al facilitar un conjunto de herramientas para automatizar las tareas más comunes en la programación, aumentando así la velocidad cuando se está programando y facilitando la colaboración entre desarrolladores, al usar todas las mismas herramientas dentro del mismo framework.
+
+###    Por qué usar Laravel... o no
+
+    Como hemos comentado antes, Laravel se ha convertido en poco tiempo en la principal opción a la hora de desarrollar proyectos web en PHP.
+
+    Esto no suele ser casualidad, así que vamos a ver cuáles son las ventajas y desventajas de usar Laravel, para que puedas decidir si es el framework PHP que necesitas para tus proyectos.
+
+
+###    Ventajas de usar Laravel
+
+    Laravel no es el único framework PHP que existe hay mucho otros, pero hay miles de programadores que han decidido utilizarlo en lugar de otros `por las ventas que aporta, veamos algunas de ellas.
+
+        Laravel es sencillo de utilizar y aprender: Una de las cualidades más apreciadas de Laravel es que resulta sencillo de aprender, respecto a otros frameworks.
+        No por esto significa que sea menos potente que otras opciones, pero sí que es más fácil de aprender, así que muchos desarrolladores elijen Laravel como su principal opción a la hora de crear sus proyectos.
+
+        Extensa documentación y comunidad enorme: Otro punto a favor de Laravel es la extensa documentación que el desarrollador tiene disponible en la red. También existen tutoriales para todo tipo de usuarios, ya sean principiantes como más avanzados. Si tienes alguna duda o problema con algo, posiblemente ya le habrá pasado antes a alguien y muy posiblemente ya esté documentado.
+
+        Librerías y paquetes disponibles: Laravel dispone de una gran cantidad de librerías y paquetes, ya sean los oficiales, como los que aporta la comunidad, que puedes aprovechar para añadir en tus distintos proyectos. Esto simplifica el tiempo que se tarda en el proceso de desarrollo de una
+
+        Seguridad y fortaleza La seguridad es muy importante en cualquier proyecto web y Laravel es muy sólido en este aspecto. Todas las aplicaciones web desarrolladas con Laravel tienen una defensa muy alta frente a las amenazas más comunes, como el malware o las inyecciones de SQL maliciosas.
+
+### Que se revisara en este proyecto|
+|
+        Introduccion
+
+        Podemos hacer una gran documentoación sobre Laravel, pero siempre he sido creyente que la ejecución del proyeccto la mejor explicación sobre la funcionalidad de un sistema
+
+
+        Instalando laravel
+
+        Partiremos desde la instalación, para ello estaremos generando documentación de la instalación, configuración, asi como la generación de cada una de las acciónes de nuestro CRUD
+
+        Primeros pasos
+        Para los desarrollaores que vean en Laravel un aliado potente en el desarrollo de Sistemas de Información, daremos pauta a la generación de un sistema CRUD, basico, pero que permita experimentar el desarrollo, agilidad y funcionalidad del framework
+
+        Estructura laravel
+        Se hechara un vistazo al sistema de carpetas en cada explicación con la finalidad de que los desarrolladores sepan por donde moverse con este framework
+
+        Por ultimo y con la ayuda de nuestro sencillo ejemplo podremos experimentar la creación de crear un sistema de información en unas pocas horas de un solo día.
+
