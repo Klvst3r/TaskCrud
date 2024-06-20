@@ -16,14 +16,14 @@
 <div class="container mt-5">
     <div class="card col-xs-6 offset-1">
         <div class="card-header">
-            Creando Tareas
+            Editando Tareas
         </div>
         <div class="card-body">
 
-            <form action="{{ route('tasks.store') }}" method="POST">
+            <form action="{{ route('tasks.update', $task) }}" method="POST">
                 @csrf
-
-                <input type="hidden" id="id" name="id" value="">
+                @method('put')
+                <input type="hidden" id="id" name="id" value="{{ old('id', $task->id) }}">
 
 
                 <div class="mb-3">
@@ -33,7 +33,7 @@
                     @enderror
 
                     <input type="text" class="form-control" name="descrip_task" id="descrip_task"
-                        aria-describedby="descrip_task" value="{{ old('descrip_task') }}">
+                        aria-describedby="descrip_task" value="{{ old('descrip_task', $task->descrip_task) }}">
                 </div>
 
                 <div class="mb-3">
@@ -43,7 +43,7 @@
                     @enderror
 
                     <input type="text" class="form-control" name="tipo_task" id="tipo_task"
-                        value="{{ old('tipo_task') }}">
+                        value="{{ old('tipo_task', $task->tipo_task) }}">
                 </div>
 
                 <div class="mb-3">
@@ -53,11 +53,11 @@
                     @enderror
 
                     <input type="text" class="form-control" name="personal_task" id="personal_task"
-                        value="{{ old('personal_task') }}">
+                        value="{{ old('personal_task', $task->personal_task) }}">
                 </div>
                 <div class="d-grid mt-3">
                     <div class="offset-4">
-                        <button type="submit" class="btn btn-primary mt-2">Registrar tarea</button>
+                        <button type="submit" class="btn btn-primary mt-2">Actualizar tarea</button>
                         <a href="{{ route('tasks.index') }}" class="btn btn-warning mt-2">Cancelar</a>
                     </div>
                 </div>

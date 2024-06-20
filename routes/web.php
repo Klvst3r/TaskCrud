@@ -19,7 +19,9 @@ Route::controller(TaskController::class)->group( function(){
 
     Route::delete('tasks/{task}', "destroy")->name("tasks.destroy");
 
-    Route::get('tasks/{task}','edit')->name('tasks.edit');
+    Route::get('tasks/{task}/edit','edit')->name('tasks.edit');
+
+    Route::put('tasks/{task}/edit','update')->name('tasks.update');
 
 });
 

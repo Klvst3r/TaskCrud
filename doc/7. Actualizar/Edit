@@ -32,3 +32,106 @@ Asi que creamos nuestra ruta hacia el controlador paa crear el edit
 Route::get('tasks/{task}','edit')->name('tasks.edit');
 
 Hasta aca deberia mostrarnos los dos botones de borrar y editar nuetro registro
+
+Aca lo que tiene que hacer es recepcionar esa información en nuestro caso del registro seleccinado mediante el boton de editar y plasmarlo en el formulario
+
+En segundo termino corresponde a la creación del controlador que hara la gestion interna para este metodo.
+
+public function edit($task) {
+         $task = Task::find($task);
+return view('tasks.edit',['task'=>$task]);
+}
+
+Si ejecutamos nuestra aplicación nos enviara una mensaje que no esta definido l metodo task.edit
+Y esto es por que no tenemos la ruta a nuestra vista,
+
+Route::get('tasks/{task}/edit','edit')->name('tasks.edit');
+
+Retomando
+Asi que vamos al formulario de edición y debemos utlizar ahora el metodo put por que vamos a actualizar
+
+Pero para que yo pueda recepcionar los valores debemos entonces recuperar esa información, y es en value vamos a agregar algo para que recupere el antguo valor en caso de que se haya llenado un campo pero el otro no.
+
+Asuma el valor del la tarea con su respectivo campo a editar.
+
+<input type="text" class="form-control" name="descrip_task" id="descrip_task"
+                        aria-describedby="descrip_task" value="{{ old('descrip_task', $task->descrip_task) }}">
+Lo mismo para los demas campos
+
+Al temrino tendremos ya en nuestro formulario la inforamción proveniente de la BD, y ahora lo que resta es solamente actualizar esa información si sufre cambios.
+
+Esto lo hacemos desde el controlador
+
+Generamos la propiedad a utilizar
+
+En el controlador
+Para realizar el metodo de actualización.
+
+    public function update(Task $request, Task $task) {
+        $task->update($request->all());
+        return redirect()->route('tasks.index');
+    }
+
+Antecediendo a este metodo de actualización de información debemos realizar nuevamente la validación de la misma como en la inserción de los datos
+
+public function update(Task $request, Task $task) {
+$request->validate([
+'descrip_task' =>'required',
+'tipo_task' =>'required',
+'personal_task' => 'required',
+]);
+
+        $task->update($request->all());
+        return redirect()->route('tasks.index');
+    }
+
+Posteriormente en el formulacio de edición, tenemos que especificar
+Y cambiamos la accion a relizar por el formulario.
+
+ <form action="{{ route('tasks.update', $task) }}" method="POST">
+
+Seria el llamaado a la acrualizacion, pasandole la variable $task
+
+Aunque en el metodo es POST mas adelante se especifica que el metodo sera en realidad PUT
+
+       <form action="{{ route('tasks.update', $task) }}" method="POST">
+                @csrf
+                @method('put')
+
+El @crsf es una especie de codigo que los formularios tienen que enviar en Laravel para los temas de seguridad
+
+Teniendo todo este tema listo.
+
+Vamos a la ruta, para hacer uso de Route Put que sirve paa actualizar
+Route::put('tasks/{task}/edit','update')->name('tasks.update');
+
+Regresamos al formulario de actualizacion de información y pulsamos el boton de actualizar:
+
+Hasta el momento nos genera el siguiente error:
+
+Too few arguments to function App\Http\Controllers\TaskController::update(), 1 passed in /Users/klvst3r/www/dev/TaskCrud/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php on line 46 and exactly 2 expected
+
+Lo que nos indica que el argumento esta mal
+Cambiamos en el controlador
+
+public function update(Task $request, Task $task) {
+
+    a lo sigueinte
+
+public function update(Request $request, Task $task) {
+
+Al ejecutar nuevamente la aplicación, nos genera un error de integridad de información en la BD
+
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id' cannot be null (Connection: mysql, SQL: update `tasks` set `id` = ?, `descrip_task` = Servicio Musica, `tasks`.`updated_at` = 2024-06-20 19:10:20 where `id` = 4)
+
+Y esto es debido a que la columna id no puede ser nulo, esto se soluciona agregando un campo oculto con lainformación del campo a actualizar
+
+  <input type="hidden" id="id" name="id" value="{{ old('id', $task->id) }}">
+
+Con esto podremos disponer del valor del identificador con el valor del registro a actualizar mediante el metodo old()
+
+Quedando completo con esto nuestra aplicación CRUD desde la Creación, el Registro, la Actualización y el Borrado de nuestra información a la Base de Datos
+
+Concluyendo con esto nuestro CRUD Basico con Laravel, que es la aplicación mas sencilla que podemos crear, empleando un poco de Bootstrap para los estilos de los formularios y el diseño
+
+Revisando el uso de los Controladores, manejos de rutas, creando nuestras interfaces a traves del motor de plantillas Blade
