@@ -18,5 +18,8 @@ Route::controller(TaskController::class)->group( function(){
     Route::post("tasks","store")->name("tasks.store");
 
     Route::delete('tasks/{task}', "destroy")->name("tasks.destroy");
+
+    Route::get('tasks/{task}','edit')->name('tasks.edit');
+
 });
 

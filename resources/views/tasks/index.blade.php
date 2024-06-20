@@ -47,9 +47,10 @@
                             <th>
                                 <div class="container">
                                     <div class="row justify-content-md-center">
-                                        {{-- <a href="{{ route('tasks.edit', $item) }}" class="btn btn-success col-3">Editar</a> --}}
+                                        <a href="{{ route('tasks.edit', $item) }}"
+                                            class="btn btn-success col-6">Editar</a>
                                         <form action="{{ route('tasks.destroy', $item) }}" method="POST"
-                                            class="col-10">
+                                            class="col-6">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger w-100">Borrar</button>

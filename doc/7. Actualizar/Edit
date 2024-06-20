@@ -1,0 +1,34 @@
+El ultimo metodo faltante por desarrollar y aunquepareciera de los mas sencillos, puede que sea el mas elaborado, ya que este metodo, debera al igual que el metodo borrar contar con un identificador unico de la tarea, mismo que sera enviado desde el listado de tareas
+
+Al recibir el valor unico en el controlador, este buscara el metodo a ejecutar siendo este la de eleiminar registro.
+
+El metodo busca la ruta a ejecutar y entro del controlador la acción a realizar con la BD que internamente realiza la tarea ejecutada.
+
+Para iniciar lo que se tiene que considerar es que en el listado de tareas se active el boton que lanzara l aaccion de edición.
+
+<a href="{{ route('tasks.edit', $item) }}" class="btn btn-success col-3">Editar</a>
+
+En segundo lugar es necesario contar con el controlador que ejecutara nuestra actualización de información y generar el metodo a utilizar
+
+public function edit($task) {
+         $task = Task::find($task);
+return view('tasks.edit',['task'=>$task]);
+}
+
+Con esto estaremos redireccionando el nombre del curso y con find hacemos que busque dentro de la identidad ese curso y devuelva el curso
+
+Ahora podremos crear la vista de nuestra edición de un registro determinado.
+
+Creamos edit.blade.php
+
+Lo cual sera similar al crear, por lo que podremos pasar el contenido realizando algunas modificaciones pertinentes.
+
+Hasta aca podremos correr la aplicación, sin embargo nos enviara un error por que aun no esta definida la ruta de
+
+Route [tasks.edit] not defined
+
+Asi que creamos nuestra ruta hacia el controlador paa crear el edit
+
+Route::get('tasks/{task}','edit')->name('tasks.edit');
+
+Hasta aca deberia mostrarnos los dos botones de borrar y editar nuetro registro
