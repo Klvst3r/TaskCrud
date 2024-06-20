@@ -72,3 +72,28 @@ Podemos referenciarnos con las variables del sistema mediante.
 http://localhost:8888/MAMP/phpinfo.php
 
 http://localhost:8888/phpMyAdmin5/
+
+Como nuestros valores se hacen mediante una inserciona a los campos siguientes:
+
+INSERT INTO `tasks` (`id`, `descrip_task`, `tipo_task`, `personal_task`, `created_at`, `updated_at`)
+VALUES
+
+Debemos utiizar en el formulario los campos siguientes:
+
+descrip_task
+tipo_task
+personal_task
+
+Actualizado, procedemos a rectificar la validacion de estos campos
+
+public function store(Request $request){
+$request->validate([
+'descrip_task' =>'required',
+'tipo_task' =>'required',
+'personal_task' => 'required',
+]);
+}
+
+Verificamos y hacemos la insercion de tarea nueva.
+
+Hasta aca deberia de funcionar correctamente.

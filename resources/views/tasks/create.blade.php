@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Crear</title>
 </head>
 
 <div class="container mt-5">
@@ -22,34 +22,38 @@
 
             <form action="{{ route('tasks.store') }}" method="POST">
                 @csrf
+
+                <input type="hidden" id="id" name="id" value="">
+
+
                 <div class="mb-3">
-                    <label for="descripcion">Descripción de la tarea </label>
-                    @error('descripcion')
+                    <label for="descrip_task">Descripción de la tarea </label>
+                    @error('descrip_task')
                         <small style="color: red">* {{ $message }}</small>
                     @enderror
 
-                    <input type="text" class="form-control" name="descripcion" id="descripcion"
-                        aria-describedby="descripcion" value="{{ old('descripcion') }}">
+                    <input type="text" class="form-control" name="descrip_task" id="descrip_task"
+                        aria-describedby="descrip_task" value="{{ old('descrip_task') }}">
                 </div>
 
                 <div class="mb-3">
-                    <label for="atencion">Tipo de tarea </label>
-                    @error('tipo')
+                    <label for="tipo_task">Tipo de tarea </label>
+                    @error('tipo_task')
                         <small style="color: red">* {{ $message }}</small>
                     @enderror
 
-                    <input type="text" class="form-control" name="tipo" id="tipo"
-                        value="{{ old('tipo') }}">
+                    <input type="text" class="form-control" name="tipo_task" id="tipo_task"
+                        value="{{ old('tipo_task') }}">
                 </div>
 
                 <div class="mb-3">
-                    <label for="atencion">Atención a usuario </label>
-                    @error('atencion')
+                    <label for="personal_task">Atención a usuario </label>
+                    @error('personal_task')
                         <small style="color: red">* {{ $message }}</small>
                     @enderror
 
-                    <input type="text" class="form-control" name="atencion" id="atencion"
-                        value="{{ old('atencion') }}">
+                    <input type="text" class="form-control" name="personal_task" id="personal_task"
+                        value="{{ old('personal_task') }}">
                 </div>
                 <div class="d-grid mt-3">
                     <div class="offset-4">
